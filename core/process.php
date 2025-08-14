@@ -44,7 +44,7 @@ if(in_array($_SERVER["HTTP_HOST"], $host_aceptados) ){
                 }
         }else {
             //El campo password esta vacio
-            $ruta = "welcome.php";
+            $ruta = "";
             $msg = "ESTA VACIO MAJE";
             $codigo_estado = 401;
             $texto_estado = "Unauthorized";
@@ -52,7 +52,7 @@ if(in_array($_SERVER["HTTP_HOST"], $host_aceptados) ){
         }
     }else{
         //El campo usuario esta vacio
-        $ruta = "welcome.php";
+        $ruta = "";
         $msg = "ESTA VACIO MAJE";
         $codigo_estado = 401;
         $texto_estado = "Unauthorized";
@@ -60,7 +60,7 @@ if(in_array($_SERVER["HTTP_HOST"], $host_aceptados) ){
     }
   }else{
     //El metodo usado por el usuario no es aceptado
-    $ruta = "welcome.php";
+    $ruta = "";
     $msg = "NO ACEPTO ESTO MAJE";
     $codigo_estado = 405;
     $texto_estado = "Method Not Allowed";
@@ -68,7 +68,7 @@ if(in_array($_SERVER["HTTP_HOST"], $host_aceptados) ){
   }
 }else{
 //La direccion ip no es aceptada
-$ruta = "welcome.php";
+$ruta = "";
 $msg = "NO ACEPTO ESTA IP MAJE";
 $codigo_estado = 403;
 $texto_estado = "Forbidden";
