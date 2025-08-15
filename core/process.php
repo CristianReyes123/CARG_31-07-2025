@@ -4,8 +4,8 @@ $host_aceptados = array('localhost','127.0.0.1');
 $metodo_aceptado = 'POST';
 $usuario_correcto = "Admin";
 $password_correcto = "Admin";
-$txt_usuario = $_POST["txt_usuario"];
-$txt_password = $_POST["txt_password"];
+$txt_usuario =((isset($_POST["txt_usuario"])) ? $_POST["txt_usuario"] : null);
+$txt_password = ((isset($_POST["txt_password"])) ? $_POST["txt_password"] : null);
 $token = "";
 
 if(in_array($_SERVER["HTTP_HOST"], $host_aceptados) ){
@@ -86,7 +86,7 @@ $arreglo_respuesta  = array(
 );
 
  header("HTTP/1.1 ".$codigo_estado." ".$texto_estado);
- header("Content-Type: Aplication/json");
+ header("Content-Type: application/json");
  echo($arreglo_respuesta);
 
 
