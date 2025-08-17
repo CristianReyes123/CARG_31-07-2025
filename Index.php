@@ -60,45 +60,47 @@
 			</div>
 		</div>
 		<script>
-			function enviar_datos(u,p){
-
+			function enviar_datos(u,p)
+			{
 				$.post(
 					$("#frm_login").attr("action"), //Ruta para envio de datos (URI)
-				{
-					txt_usuario: u,
-					txt_password : p
-				}
-				).done(function (datos){
-					window.location.replace(datos.data.url+"?token="+datos.data.token);
-				}).fail(function(hxr,status,error){
-					$(".mensaje").html(hxr.responseJSON.error.message)
-				});
-			}
-				$(document).ready(function(){
-					//SI LA PERSONA PRESIONA EL BOTON "INICIAR SESION"
-					$("#btn_entrar").click(function(event){
-						//SE EJECUTA LA FUNCION enviar_datos()
-						enviar_datos($("#txt_usuario"),$("#txt_password"));
-					});
+                    {
+                        txt_usuario: u,
+                        txt_password: p
 
-					//SI la persona presiona "ENTER" MIENTRAS EL PUNTERO ESTA EN EL CAMPO
-					//txt_usuario
-					$(document).keypress(function(event){
-					//SE EVALUA SI LA TECLA PRESIONA ES "ENTER"
-					if(event.which == 13){
-						//SE EJECUTA LA FUNCION enviar_datos()
-					enviar_datos($("#txt_usuario"),$("#txt_password"));
-					}
-				});
-				//SI LA PERSONA PRESIONA "ENTER" MIENTRAS EL PUNTERO ESTA EN EL CAMPO
-				//txt.password
-				$("#txt_password").keypress(function(event){
-					//SE EVALUA SI LA TECLA PRESIONA ES "ENTER"
-					if(event.which == 13){
-						//SE EJECUTA LA FUNCION enviar_datos()
-						enviar_datos($("#txt_usuario"),$("#txt_password"));
-					}
-				});
+                    }
+                ).done(function(datos){
+                    window.location.replace(datos.data.url+"?token="+datos.data.token);
+                }).fail(function(xhr,status,error){
+                        $(".mensaje").html(xhr.response.error.message)
+                });
+		    }
+            $(document).ready(function(){
+                //Si la persona presiona el boton "INICIAR SESSION"
+                $("#btn_entrar").click(function(){
+                    //Se ejecuta el envio de datos
+                    enviar_datos($("#txt_usuario").val(), $("#txt_password").val());
+                });
+
+                //Si la persona presiona Enter mientra el focus esta en el campo
+                //txt_usuario
+                $("#txt_usuario").keypress(function(event){
+                    //Se evalua si la tecla presionada es Enter
+                    if(event.which == 13){
+                        //Se ejecuta la funcion enviar_datos()
+                        enviar_datos($("#txt_usuario").val(), $("#txt_password").val());
+
+                    }
+                });
+                //Si la persona presiona Enter mientra el focus esta en el campo
+                //txt_password
+                $("#txt_password").keypress(function(event){
+                    //Se evalua si la tecla presionada es Enter
+                    if(event.which ==13){
+                        //Se ejecuta la funcion enviar_datos()
+                        enviar_datos($("#txt_usuario").val(), $("#txt_password").val());
+                    }
+                });
 			});
 		</script>
 	</body>
